@@ -1,0 +1,36 @@
+﻿@model IEnumerable<WebLoja.Models.Produto>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Novo Produto</a>
+</p>
+<div class="container-fluid d-lg-flex flex-wrap">
+    @foreach (var item in Model)
+    {
+        <div class="col-lg-3 p-3">
+            <div class="card flex-fill">
+                <div class="card-header">
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </div>
+                <div class="card-body">
+                    <img src="@item.Foto" class="img-fluid">
+                </div>
+
+
+                <div class="card-footer">
+                    @String.Format("{0:c}",item.Preco)
+                    <br>
+                    <a class="btn btn-primary " asp-action="Details" asp-route-id="@item.Id">Detalhes</a>
+                </div>
+            </div>
+
+
+        </div>
+    }
+
+</div>
